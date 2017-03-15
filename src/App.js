@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from "./components/todo"
-import {addTodo, generateId, findById, toggleTodo, updateTodo} from "./lib/todoHelpers"
+import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo} from "./lib/todoHelpers"
 import {pipe, partial} from "./lib/utils"
 
 class App extends Component {
@@ -13,6 +13,12 @@ class App extends Component {
       {id: 3, name: "Ship It!", isComplete: false}
     ],
     currentTodo: ""
+  }
+
+  handleRemove = (id, evt) => {
+    evt.preventDefault()
+    const updatedTodos = removeTodo(this.state.todos, id)
+    this.setState({todos: updatedTodos})
   }
 
   handleToggle = (id) => {
@@ -60,7 +66,8 @@ class App extends Component {
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}/>
           <TodoList handleToggle={this.handleToggle}
-            todos={this.state.todos}/>
+            todos={this.state.todos}
+            handleRemove={this.handleRemove}/>
         </div>
       </div>
     );
