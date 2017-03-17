@@ -18,12 +18,12 @@
     {
       "id": 4,
       "name": "Setup fetch",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 14164,
       "name": "New Todo",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 6705,
